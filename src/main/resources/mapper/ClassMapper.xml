@@ -1,0 +1,24 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD com.example.Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.aaa.springboot06.mapper.ClassMapper">
+
+
+    <select id="findAll" resultType="com.aaa.springboot06.entity.Class">
+         select c.c_id,c.c_name,g.g_id,g.g_name from class c,grade g where c.g_id=g.g_id
+    </select>
+    <insert id="insert"  parameterType="com.aaa.springboot06.entity.Class">
+         insert into class(c_id,c_name,g_id)values(#{c_id},#{c_name},#{g_id})
+     </insert>
+    <delete id="delete"  parameterType="int">
+        delete from class where c_id=#{c_id}
+    </delete>
+    <update id="update"  parameterType="com.aaa.springboot06.entity.Class">
+        update class set c_id=#{c_id},c_name=#{c_name},g_id=#{g_id} where c_id=#{c_id}
+    </update>
+    <select id="se" resultType="com.aaa.springboot06.entity.Class">
+         select * from class where c_id=#{c_id}
+    </select>
+</mapper>

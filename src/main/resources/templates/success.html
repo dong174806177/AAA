@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<table border="1px">
+    <tr>
+        <td>班级编号</td>
+        <td>班级名称</td>
+        <td>所属年级</td>
+        <td>操作</td>
+    </tr>
+    <tr  th:each="l:${list}">
+
+        <td th:text="${l.c_id}">编号</td>
+        <td th:text="${l.c_name}">名称</td>
+        <td th:text="${l.g_name}">年级</td>
+        <td><a th:href="@{/delete(c_id=${l.c_id})}">删除</a></td>
+        <td><a th:href="@{/se(c_id=${l.c_id})}">修改</a></td>
+    </tr>
+
+
+</table>
+<form th:action="insert" th:method="post">
+    <table border="1px" >
+        <tr>
+            <td>班级编号</td>
+            <td><input name="c_id"type="text"style="width:50px"/></td>
+        </tr>
+        <tr>
+            <td>班级名称</td>
+            <td><input name="c_name"type="text"style="width:50px"/></td>
+        </tr>
+        <tr>
+            <td>年级编号</td>
+            <td><input name="g_id"type="text"style="width:50px"/></td>
+        </tr>
+        <tr><td><input type="submit"  value="添加"></td></tr>
+    </table>
+</form>
+
+</body>
+</html>
